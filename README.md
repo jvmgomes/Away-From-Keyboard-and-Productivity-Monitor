@@ -67,7 +67,7 @@ Para usar o Gmail, você precisa:
 
 1. **Inicie o aplicativo**
 2. **Configure suas preferências**:
-   - Tempo de inatividade (em minutos)
+   - Tempo de inatividade 
    - Configurações de email
 3. **Inicie o monitoramento**
 4. O sistema começará a rastrear sua atividade
