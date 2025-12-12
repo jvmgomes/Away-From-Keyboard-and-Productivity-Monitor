@@ -1,137 +1,121 @@
-🖥️ Away From Keyboard and Productivity Monitor
+# Away From Keyboard and Productivity Monitor
 
-Um monitor de produtividade em Windows Forms (C#) que detecta inatividade do usuário em uma janela — seja por falta de interação com o teclado ou mouse — e envia um alerta por e-mail caso o tempo limite seja atingido.
+Um sistema de monitoramento de atividade em C# que detecta inatividade do usuário através do teclado e mouse, enviando alertas por email quando o tempo de inatividade ultrapassa um limite configurável.
 
-Este projeto é útil para:
+## 📋 Descrição
 
-Monitoramento de produtividade
+Este projeto monitora continuamente a atividade do usuário no Windows, rastreando movimentos do mouse e pressionamentos de tecla. Quando detecta inatividade por um período determinado, envia automaticamente um alerta por email para notificar sobre a ausência do usuário.
 
-Controle de pausas em ambientes corporativos
+> ⚠️ **Projeto Educacional**: Este projeto foi desenvolvido para fins didáticos e de aprendizado em programação C#, Win32 API e desenvolvimento de aplicações Windows Forms.
 
-Sistemas de segurança que exigem atividade contínua
+## ✨ Funcionalidades
 
-Aplicações que precisam detectar ausência do operador
+- 🖱️ **Monitoramento de Mouse**: Detecta movimento e cliques do mouse
+- ⌨️ **Monitoramento de Teclado**: Rastreia pressionamentos de tecla
+- ⏱️ **Detecção de Inatividade**: Configura tempo limite personalizado
+- 📧 **Alertas por Email**: Envia notificações automáticas via SMTP
+- 🎯 **Interface Gráfica**: Configuração fácil através de formulários Windows Forms
+- 💾 **Persistência de Configurações**: Salva preferências do usuário
+- 📊 **Registro de Atividades**: Mantém logs de eventos de inatividade
 
-🚀 Funcionalidades
-✔️ Detecção de Inatividade
+## 🚀 Tecnologias Utilizadas
 
-O sistema monitora:
+- C# / .NET Framework
+- Windows Forms
+- Win32 API (Hooks de Sistema)
+- SMTP para envio de emails
+- System.Configuration para gerenciamento de configurações
 
-Movimentação do mouse
+## 📦 Pré-requisitos
 
-Cliques
+- Windows 7 ou superior
+- .NET Framework 4.7.2 ou superior
+- Conta de email com SMTP habilitado (Gmail, Outlook, etc.)
 
-Pressionamento de teclas
+## 🔧 Instalação
 
-Atividade dentro da janela monitorada
+1. Clone o repositório:
+```bash
+git clone https://github.com/jvmgomes/Away-From-Keyboard-and-Productivity-Monitor.git
+```
 
-Se nenhum desses eventos ocorrer dentro de um intervalo configurado, o usuário é considerado AFK (Away From Keyboard).
+2. Abra o projeto no Visual Studio:
+```bash
+cd Away-From-Keyboard-and-Productivity-Monitor
+```
 
-✔️ Envio Automático de Alerta por E-mail
+3. Restaure os pacotes NuGet (se necessário)
 
-Quando a inatividade ultrapassa o limite definido, o sistema envia automaticamente uma notificação usando SMTP.
+4. Compile e execute o projeto
 
-O e-mail contém:
+## ⚙️ Configuração
 
-Tempo detectado de inatividade
+### Configuração de Tempo de Inatividade
 
-Data e hora
+- Acesse a interface do programa
+- Configure o tempo limite em minutos através do formulário de configurações
+- Salve as preferências
 
-Informações da sessão
+### Configuração para Gmail
 
-✔️ Configurações Ajustáveis
+Para usar o Gmail, você precisa:
+1. Ativar a verificação em duas etapas
+2. Gerar uma senha de aplicativo
+3. Usar a senha de aplicativo no campo `EmailPassword`
 
-O usuário pode definir:
+## 📖 Como Usar
 
-Tempo máximo permitido sem atividade
+1. **Inicie o aplicativo**
+2. **Configure suas preferências**:
+   - Tempo de inatividade (em minutos)
+   - Configurações de email
+3. **Inicie o monitoramento**
+4. O sistema começará a rastrear sua atividade
+5. Ao detectar inatividade, um email será enviado automaticamente
 
-Endereço(s) de e-mail para alerta
+## 🏗️ Estrutura do Projeto
 
-Configurações de servidor SMTP
-
-Comportamentos adicionais quando AFK
-
-✔️ Interface Simples e Direta
-
-Desenvolvido em Windows Forms, o sistema oferece:
-
-Formulário de configuração
-
-Logs de atividade
-
-Visualização clara de status
-
-🛠️ Tecnologias Utilizadas
-
-C#
-
-.NET Framework / Windows Forms
-
-Funções DLL
-
-Monitoramento de eventos do sistema (mouse e teclado)
-
-Envio de e-mails via System.Net.Mail
-
-📂 Estrutura do Projeto
-
+```
 src/
-├── AppMonitor.cs            # Lógica principal de detecção
-├── Logs.cs                  # Registro de atividades
-├── Mail.cs                  # Envio de alertas por e-mail
-├── Program.cs               # Ponto de entrada
-├── SessaoAtividade.cs       # Controle da sessão e temporizador
-├── Form1.cs / Designer      # Interface principal
-├── FormConfiguracoes.cs     # Interface de configuração
-├── *.resx                   # Recursos visuais
+├── App.config              # Configurações da aplicação
+├── AppMonitor.cs          # Lógica principal de monitoramento
+├── Config.cs              # Gerenciamento de configurações
+├── Form1.cs               # Interface principal
+├── Form1.Designer.cs      # Designer do formulário
+├── Form1.resx            # Recursos do formulário
+├── FormConfiguracoes.cs   # Formulário de configurações
+├── Logs.cs               # Sistema de logs
+├── Mail.cs               # Gerenciamento de email
+├── Program.cs            # Ponto de entrada
+└── SessaoAtividade.cs    # Controle de sessões
+```
 
-🔧 Como Executar
+## 🔐 Segurança
 
-Clone o repositório:
+⚠️ **Importante**: 
+- Nunca compartilhe seu arquivo `App.config` com senhas reais
+- Use senhas de aplicativo ao invés de senhas principais
+- Considere usar variáveis de ambiente para dados sensíveis
+- Adicione `App.config` ao `.gitignore` em produção
 
-git clone https://github.com/seu-usuario/Away-From-Keyboard-and-Productivity-Monitor.git
+## 🤝 Contribuindo
 
+Contribuições são bem-vindas! Para contribuir:
 
-Abra o projeto no Visual Studio.
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
 
-Configure os parâmetros (tempo e e-mail) no formulário.
+## 📄 Licença
 
-Execute.
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-📧 Configuração de E-mail (SMTP)
+**Nota**: Este é um projeto educacional desenvolvido para fins de aprendizado e demonstração de conceitos de programação.
 
-No formulário de configurações, preencha:
+## 👤 Autores
 
-Servidor SMTP
-
-Porta
-
-E-mail remetente
-
-Senha / App Password
-
-E-mail(s) destino
-
-Suporta servidores como:
-
-Gmail
-
-Outlook
-
-Hotmail
-
-Provedores corporativos
-
-🧪 Funcionamento Interno
-
-O aplicativo registra eventos de input do usuário.
-
-Um cronômetro reinicia sempre que ocorre uma interação.
-
-Caso o tempo exceda o limite configurado:
-
-Uma entrada é registrada no log
-
-Um e-mail é disparado
-
-O monitoramento segue ativo até o encerramento da aplicação.
+- GitHub: [@jvmgomes](https://github.com/jvmgomes)
+- Github: [@Thiago-Heleno](https://github.com/Thiago-Heleno)
+- Github: [@EnzoBaldinotti](https://github.com/EnzoBaldinotti)
